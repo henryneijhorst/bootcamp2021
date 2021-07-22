@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Memory {
 
-	// the HashSet (an collection which only contains unique) elements
+	// the HashSet (a collection which only contains unique) elements
 	private HashSet<Integer> knownNumbers;
 	
 	// a counter to record how many times a user has entered a value
@@ -58,7 +58,7 @@ public class Memory {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter a number: ");
 		String providedText = input.next();
-		//System.out.println();
+		
 		if (providedText.equals("quit")) {
 			// the user provided an empty text, so we exit with false
 			return false;
