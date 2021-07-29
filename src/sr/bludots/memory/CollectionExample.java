@@ -6,6 +6,16 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+// Assignment
+// Voegt u ook aan adres en leeftijd toe aan de persoon
+// Laat zien dat u ook kunt sorteren op leeftijd van jong -> oud
+// Laat zien dat u ook kunt sorteren op leeftijd van oud -> jong
+// Laat zien dat u ook kunt sorteren op eerst achternaam en dan voornaam: hint > bij gelijk geeft compareTo 0 terug
+
+
+
+
 public class CollectionExample {
 
 	
