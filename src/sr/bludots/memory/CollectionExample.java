@@ -23,10 +23,21 @@ public class CollectionExample {
 		
 		private String voornaam;
 		private String achternaam;
+		private String adres;
+		private int leeftijd;
+		
 		
 		public Person(String voornaam, String achternaam) {
 			this.voornaam = voornaam;
 			this.achternaam = achternaam;
+			this.adres = "";
+			this.leeftijd = 18;
+		}
+		public Person(String voornaam, String achternaam, String adres, int leeftijd) {
+			this.voornaam = voornaam;
+			this.achternaam = achternaam;
+			this.adres = adres;
+			this.leeftijd = leeftijd;
 		}
 		
 		public String getVoorNaam() {
@@ -36,6 +47,23 @@ public class CollectionExample {
 		public String getAchterNaam() {
 			return achternaam;
 		}
+		
+		public String getAdres() {
+			return adres;
+		}
+
+		public void setAdres(String adres) {
+			this.adres = adres;
+		}
+
+		public int getLeeftijd() {
+			return leeftijd;
+		}
+
+		public void setLeeftijd(int leeftijd) {
+			this.leeftijd = leeftijd;
+		}
+
 		@Override
 		public String toString() {
 			return "Ik heet "  + voornaam + " " + achternaam; 
@@ -54,19 +82,24 @@ public class CollectionExample {
 
 		@Override
 		public int compareTo(Person p1) {
-			return achternaam.compareTo(p1.getAchterNaam());
+			int c = achternaam.compareTo(p1.achternaam);
+			if (c == 0) {
+				c = voornaam.compareTo(p1.voornaam);
+			}
+			return c;
 		}
 	}
 	
 	public static void main(String args[]) {
 		ArrayList <Person> arrayList1 = new ArrayList<Person>();
-		arrayList1.add(new Person("Justin", "Douglas"));
-		arrayList1.add(new Person("Everny", "Iengibe"));
-		arrayList1.add(new Person("Kirsten", "Mentopawiro"));
+		arrayList1.add(new Person("Justin", "Douglas", "Markoesastraat", 30));
+		arrayList1.add(new Person("Everny", "Iengibe", "Coppenamestraat", 15));
+		arrayList1.add(new Person("Kirsten", "Mentopawiro", "Wanicastrat", 22));
+		arrayList1.add(new Person("Boris", "Douglas", "Markoesastraat", 30));
 		
 		Collections.sort(arrayList1);
 		
-		Person checkPerson = new Person("JUstin", "Douglas");
+		Person checkPerson = new Person("Justin", "Douglas");
 		//System.err.println("check= " + arrayList1.contains(checkPerson));
 		
 		

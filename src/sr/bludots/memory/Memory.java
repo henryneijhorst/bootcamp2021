@@ -26,6 +26,9 @@ public class Memory {
 
 	// a counter to record how many times a user has entered a value
 	private int numberOfTries;
+	
+	// Max number of allowed tries
+	final int MAX_ALLOWED_tries = 5;
 
 
 	// Constructor, to create a Memory object
@@ -72,6 +75,9 @@ public class Memory {
 		else {
 			// increase the try counter
 			numberOfTries++;
+			if (numberOfTries > MAX_ALLOWED_tries) {
+				return false;
+			}
 
 			// now we check to see if the text reflect a number
 			// in case parsing fails an exception will be thrown
