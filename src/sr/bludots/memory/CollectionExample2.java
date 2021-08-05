@@ -217,6 +217,12 @@ public class CollectionExample2 {
 		//System.err.println("Array contains brian =" + arrayList.contains("kirsten"));
 		
 		
+		// collection -> List -> ArrayList [0] [1] [2] 
+		// collection -> List -> LinkedList
+		// collection -> List -> Stack
+		// 
+		
+		
 		
 		ArrayList <Person> arrayList1 = new ArrayList<Person>();
 		
