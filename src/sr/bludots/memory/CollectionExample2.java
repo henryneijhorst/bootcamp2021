@@ -4,19 +4,32 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 
 // Assignment
-// Voegt u ook aan adres en leeftijd toe aan de persoon
-// Laat zien dat u ook kunt sorteren op leeftijd van jong -> oud
-// Laat zien dat u ook kunt sorteren op leeftijd van oud -> jong
-// Laat zien dat u ook kunt sorteren op eerst achternaam en dan voornaam: hint > bij gelijk geeft compareTo 0 terug
+
+// assignment 1:
+// vul een array met 1 miljoen records (allemaal zelfde naam)
+// wijzig steeds van 1 record (de laatste, de middelste en de eerste)  de naam
+// zoek naar dit record en laat zien hoe lang dit duurt.
+
+
+// assignments 2:
+// vul een hashmap met 1 miljoen records, gebruik elke keer een unieke id, de naam mag steeds hetzelfde
+// zijn of mag je veranderen als je dat voor elkaar krijgt
+// meet hoe lang het duurt om een record op te vragen
+// maak 1 record met een andere naam,
+// meet ook hoe lang het duurt om dit record via zijn key op te vragen...
 
 
 
 
-public class CollectionExample {
+
+
+public class CollectionExample2 {
 
 	
 	public static class Person implements Comparable<Person> {
@@ -91,7 +104,11 @@ public class CollectionExample {
 	}
 	
 	public static void main(String args[]) {
+		
+		long t0 = System.currentTimeMillis();
+		
 		ArrayList <Person> arrayList1 = new ArrayList<Person>();
+		long t2= System.currentTimeMillis();
 		arrayList1.add(new Person("Justin", "Douglas", "Markoesastraat", 30));
 		arrayList1.add(new Person("Everny", "Iengibe", "Coppenamestraat", 15));
 		arrayList1.add(new Person("Kirsten", "Mentopawiro", "Wanicastrat", 22));
@@ -100,12 +117,78 @@ public class CollectionExample {
 		Collections.sort(arrayList1);
 		
 		Person checkPerson = new Person("Justin", "Douglas");
+		
 		//System.err.println("check= " + arrayList1.contains(checkPerson));
 		
 		
+		///  A      B    C    D    E   F  G  H -> 2 log(8) = 3
+		
+		// Binary search
+		// reeks moet gesorteerd zijn (voor uw zoekterm)
+		// n records -> 2 log
 		
 		
-		System.err.println(arrayList1);
+		// Linear
+		// aantal records: alle records doorlopen (worst case) of 1 (best case)
+		
+		
+		// ArrayList
+		// - lineair 
+		// - record kan meerdere keren voorkomen (niet uniek)
+		// - elke element kan via index worden aangesproken. (eerste =0, tweede=1, etc etc)
+		
+		// Map 
+		// kent een key en een value 
+		// key moet uniek zijn
+		// opvragen altijd via key (sleutel)
+		// map is ongesorteerd, de volgorde is niet voorspelbaar
+		
+		HashMap <Integer, Person> personMap = new HashMap<Integer, Person>();
+		personMap.put(111, new Person("Justin", "Douglas", "Markoesastraat", 30));
+		personMap.put(112, new Person("Everny", "Iengibe", "Coppenamestraat", 15));
+		personMap.put(113, new Person("Kirsten", "Mentopawiro", "Wanicastraat", 22));
+		personMap.put(114, new Person("Boris", "Douglas", "Markoesastraat", 30));
+		personMap.put(111, new Person("Boris", "Douglas", "Markoesastraat", 30));
+		
+		Person p = personMap.get(113);
+		//System.err.println(p);
+		
+		// (linear) list
+		Collection <Person> persons = personMap.values();
+		for (Person person: persons) {
+			if (person.voornaam.equals("Boris" )) {
+				//System.err.println("Found!! " + person);
+			}
+		}
+		
+		// (linear) list
+		int size = persons.size();
+		ArrayList <Person> arrayOfPersons = new ArrayList<Person>(persons);
+		for (int i=0; i<size; i++) {
+			Person p1 = arrayOfPersons.get(i);
+			if (p1.voornaam.equals("Boris" )) {
+				System.err.println("Found!! " + p1);
+			}
+		}
+		
+		// show all keys
+		Collection <Integer> keys = personMap.keySet();
+		for (Integer key: keys) {
+			Person p2 = personMap.get(key);
+			if (p2.voornaam.equals("Boris")) {
+				System.err.println("Key=" + key + ", person=" + p2);
+			}
+		}
+		
+		//System.err.println(personMap);
+		
+		//epoch time. time elapsed since specific point in time (1970, 0:00 uur in Greenwich) 
+		
+		// current time ->
+		long t1 = System.currentTimeMillis();
+		long duration = t1-t0;
+		System.err.println(" it took " + duration + "  ms");
+		
 	}
 	
 	
