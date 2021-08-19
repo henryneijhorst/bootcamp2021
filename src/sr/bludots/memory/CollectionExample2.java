@@ -39,7 +39,7 @@ public class CollectionExample2 {
 		private String adres;
 		private int leeftijd;
 		
-		
+			
 		public Person(String voornaam, String achternaam) {
 			this.voornaam = voornaam;
 			this.achternaam = achternaam;
