@@ -17,6 +17,7 @@ public class Atleet {
 	
 	public enum Sport { BAANWIELRENNEN, ATLETIEK, ZWEMMEN, BOKSEN, ZEILEN, VOETBAL};
 	
+	
 	private String voornaam;
 	
 	private String achternaam;
